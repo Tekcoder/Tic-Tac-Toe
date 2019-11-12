@@ -34,3 +34,25 @@ board[turn-1] = player1
 
 show_board(board)
     
+puts "Now, your move is displayed on the board"
+
+def input
+    puts "If Player 1 enters "X" then automatically "O" is assigned to Player 2"
+    puts "Display the board"
+    puts "Any cell that player 1 chooses, player 2's input shouldn't override that of player 1"
+    puts "The show_board method should be updated and shown on the screen"
+end
+
+def player_turn
+    puts "Whenever Player 1 chooses a cell, player 2 should be alerted to play"
+    puts "To check if the game has come to an end"
+end
+
+def draw?
+    puts "if all the cells are filled up without the expected winning combinations, then a message should be printed showing the draw/tie"
+end
+
+def win?
+    puts "if one of the players enters the required combination, the draw method should be false and a message should be shown indicating the player who won"
+end
+
