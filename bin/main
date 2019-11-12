@@ -12,7 +12,7 @@ def show_board(
 end
 
 board = ["1 ", "2 ", " 3", "4 ", "5 ", "6 ", " 7", " 8", " 9"]
-#puts show_board([1,2,3,4,5,6,7,8,9])
+show_board(board)
 puts "Welcome to the game! who will you be today? X or O?"
 player1 = gets.chomp
 player1.upcase!
@@ -31,7 +31,6 @@ input = gets.chomp
 input.upcase!
 turn = Integer(input)
 board[turn-1] = player1
-puts `clear`
 
 show_board(board)
     
