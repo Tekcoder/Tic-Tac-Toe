@@ -89,6 +89,24 @@ class UserInterface
       elsif @game.draw?
         puts "It's a draw!"
       end
+    play_again?
+  end
+  
+  def play_again?
+   input = nil
+
+    loop do
+      puts "Would you like to Play again? Y/N?"
+      input = gets.chomp.upcase
+
+      break if input == "Y" || input == "N"
+    end
+
+    if input == "Y"
+      play
+    else
+      puts "Thanks for playing!"
+    end
   end
 end
 
@@ -96,4 +114,3 @@ game = UserInterface.new
 game.welcome
 game.play
 game.end
-
