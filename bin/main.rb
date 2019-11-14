@@ -93,6 +93,7 @@ class UserInterface
   end
   
   def play_again?
+    @game = GameManager.new(@players)
    input = nil
 
     loop do
