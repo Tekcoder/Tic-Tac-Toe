@@ -27,10 +27,19 @@ describe GameManager do
     end
   end
 
-  describe '#won?' do
-    let(:board) { GameManager.new((1..9).to_a) }
-    it 'Should return true if the 1st row is filled with the same symbol' do
-      expect(board.won?(['X', 'X', 'X', 4, 5, 6, 7, 8, 9])).to eql(true)
+  describe 'WIN_COMBINATIONS' do
+    it 'defines a constant WIN_COMBINATIONS with arrays for each win combination' do
+      expect(GameManager::WIN_COMBINATIONS.size).to eq(8)
+
+      expect(GameManager::WIN_COMBINATIONS).to include([0,1,2])
+      expect(GameManager::WIN_COMBINATIONS).to include([3,4,5])
+      expect(GameManager::WIN_COMBINATIONS).to include([6,7,8])
+      expect(GameManager::WIN_COMBINATIONS).to include([0,3,6])
+      expect(GameManager::WIN_COMBINATIONS).to include([1,4,7])
+      expect(GameManager::WIN_COMBINATIONS).to include([2,5,8])
+      expect(GameManager::WIN_COMBINATIONS).to include([0,4,8])
+      expect(GameManager::WIN_COMBINATIONS).to include([6,4,2])
     end
   end
+
 end
