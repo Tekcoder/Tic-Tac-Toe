@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require './lib/player.rb'
 
 RSpec.describe Player do
