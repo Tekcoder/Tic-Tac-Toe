@@ -68,4 +68,18 @@ describe GameManager do
     end
   end
 
+  describe '#space_filled?' do
+  let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
+    context 'Current space = filled'
+    it 'checks if a board position has X or O' do
+      game.set_input(1, :X)
+      expect(game.space_filled?(1)).to eq(true)
+    end
+
+    context 'Current space = empty'
+    it 'checks if a board position has X or O' do
+      game.set_input(1, ' ')
+      expect(game.space_filled?(3)).to eql(false)
+    end
+  end
 end
