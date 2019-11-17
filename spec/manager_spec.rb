@@ -94,4 +94,89 @@ describe GameManager do
     expect(game.turn_count).to eql(5)
   end
 end
+
+describe '#full?' do
+let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
+    context 'The Board is not full'
+    it 'Checks if all the positions in the board are occupied' do
+      game.set_input(0, :X)
+      game.set_input(1, :O)
+      game.set_input(2, :X)
+      game.set_input(3, :O)
+      expect(game.full?).to eq(false)
+    end
+
+    context 'The Board is filled up'
+    it 'Checks if all the positions in the board are occupied' do
+      game.set_input(0, :X)
+      game.set_input(1, :O)
+      game.set_input(2, :X)
+      game.set_input(3, :O)
+      game.set_input(4, :X)
+      game.set_input(5, :O)
+      game.set_input(6, :X)
+      game.set_input(7, :O)
+      game.set_input(8, :X)
+      expect(game.full?).to eq(true)
+    end
+  end
+
+  describe '#won?' do
+  let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
+    it 'Winning combination - Top horizontal' do
+      game.set_input(0, :X)
+      game.set_input(1, :X)
+      game.set_input(2, :X)
+      expect(game.won?).to eq([0, 1, 2])
+    end
+
+    it 'Winning combination - First Diagonal' do
+      game.set_input(0, :X)
+      game.set_input(4, :X)
+      game.set_input(8, :X)
+      expect(game.won?).to eq([0, 4, 8])
+    end
+
+    it 'Winning combination -Second Diagonal' do
+      game.set_input(6, :X)
+      game.set_input(4, :X)
+      game.set_input(2, :X)
+      expect(game.won?).to eq([6, 4, 2])
+    end
+
+    it 'Winning combination - Middle horizontal' do
+      game.set_input(3, :X)
+      game.set_input(4, :X)
+      game.set_input(5, :X)
+      expect(game.won?).to eq([3, 4, 5])
+    end
+
+    it 'Winning combination -Bottom horizontal' do
+      game.set_input(6, :X)
+      game.set_input(7, :X)
+      game.set_input(8, :X)
+      expect(game.won?).to eq([6, 7, 8])
+    end
+
+    it 'Winning combination - Left vertical' do
+      game.set_input(0, :O)
+      game.set_input(3, :O)
+      game.set_input(6, :O)
+      expect(game.won?).to eq([0, 3, 6])
+    end
+
+    it 'Middle vertical win combination' do
+      game.set_input(1, :X)
+      game.set_input(4, :X)
+      game.set_input(7, :X)
+      expect(game.won?).to eq([1, 4, 7])
+    end
+
+    it 'Right vertical win combination' do
+      game.set_input(2, :O)
+      game.set_input(5, :O)
+      game.set_input(8, :O)
+      expect(game.won?).to eq([2, 5, 8])
+    end
+  end
 end
