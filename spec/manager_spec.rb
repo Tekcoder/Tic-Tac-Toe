@@ -179,4 +179,20 @@ let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
       expect(game.won?).to eq([2, 5, 8])
     end
   end
+
+  describe '#draw?' do
+  let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
+    it 'Checks if there is a draw after all positions are occupied and no win' do
+      game.set_input(5, :X)
+      game.set_input(1, :O)
+      game.set_input(2, :X)
+      game.set_input(8, :O)
+      game.set_input(6, :X)
+      game.set_input(4, :O)
+      game.set_input(7, :X)
+      game.set_input(3, :O)
+      game.set_input(0, :X)
+      expect(game.draw?).to eq(true)
+    end
+  end
 end
