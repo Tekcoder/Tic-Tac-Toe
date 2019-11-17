@@ -82,4 +82,16 @@ describe GameManager do
       expect(game.space_filled?(3)).to eql(false)
     end
   end
+
+  describe '#turn_count' do
+  let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
+  it 'displays the counter for how many turns has been passed' do
+    game.set_input(0, :X)
+    game.set_input(1, :O)
+    game.set_input(2, :X)
+    game.set_input(3, :O)
+    game.set_input(4, :X)
+    expect(game.turn_count).to eql(5)
+  end
+end
 end
