@@ -246,5 +246,13 @@ let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
   it 'displays the original value of the input.For instance, Instead of 2, the system sees 1' do
   expect(game.board_index(2)).to eql(1)
   end
+
+  it "converts the user's input (a string) into an integer" do
+    expect(game.board_index("1")).to be_an(Integer)
+  end
+
+  it "accepts the user's input (a string) as an argument" do
+    expect{game.board_index}.to raise_error(ArgumentError)
+  end
   end
 end
