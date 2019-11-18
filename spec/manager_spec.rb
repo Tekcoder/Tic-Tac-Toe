@@ -195,4 +195,35 @@ let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
       expect(game.draw?).to eq(true)
     end
   end
+
+  describe '#over?' do
+  let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
+    context 'The Board is full but there is no winning combination condition met'
+    it 'Checks for won? or full? or draw?, returns true if game is over' do
+      game.set_input(0, :X)
+      game.set_input(1, :O)
+      game.set_input(2, :X)
+      game.set_input(3, :X)
+      game.set_input(4, :X)
+      game.set_input(5, :O)
+      game.set_input(6, :O)
+      game.set_input(7, :X)
+      game.set_input(8, :O)
+      expect(game.over?).to eq(true)
+    end
+
+    context 'The Board is full and a winning combination is detected'
+    it 'Checks for won? or full? or draw?, returns true if game is over' do
+      game.set_input(0, :O)
+      game.set_input(1, :O)
+      game.set_input(2, :X)
+      game.set_input(3, :X)
+      game.set_input(4, :X)
+      game.set_input(5, :X)
+      game.set_input(6, :O)
+      game.set_input(7, :X)
+      game.set_input(8, :O)
+      expect(game.over?).to eq(game.won?)
+    end
+  end
 end
