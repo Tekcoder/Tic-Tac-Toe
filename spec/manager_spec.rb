@@ -244,7 +244,15 @@ let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
   describe '#board_index' do
   let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
   it 'displays the original value of the input.For instance, Instead of 2, the system sees 1' do
+  expect(game.board_index(1)).to eql(0)
   expect(game.board_index(2)).to eql(1)
+  expect(game.board_index(3)).to eql(2)
+  expect(game.board_index(4)).to eql(3)
+  expect(game.board_index(5)).to eql(4)
+  expect(game.board_index(6)).to eql(5)
+  expect(game.board_index(7)).to eql(6)
+  expect(game.board_index(8)).to eql(7)
+  expect(game.board_index(9)).to eql(8)
   end
 
   it "converts the user's input (a string) into an integer" do
@@ -254,5 +262,36 @@ let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
   it "accepts the user's input (a string) as an argument" do
     expect{game.board_index}.to raise_error(ArgumentError)
   end
+  end
+
+  describe '#winner?' do
+  let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
+    context 'Winner is O'
+    it 'checks if the winner is O' do
+      game.set_input(5, :X)
+      game.set_input(1, :O)
+      game.set_input(2, :X)
+      game.set_input(4, :O)
+      game.set_input(6, :X)
+      game.set_input(7, :O)
+      game.set_input(8, :X)
+      game.set_input(3, :O)
+      game.set_input(0, :X)
+      expect(game.winner? == :O).to eq(true)
+    end
+
+    context 'Winner is X'
+    it 'checks if the winner is X' do
+      game.set_input(0, :X)
+      game.set_input(1, :O)
+      game.set_input(3, :X)
+      game.set_input(4, :O)
+      game.set_input(6, :X)
+      game.set_input(5, :O)
+      game.set_input(2, :x)
+      game.set_input(7, :X)
+      game.set_input(8, :O)
+      expect(game.winner? == :X).to eq(true)
+    end
   end
 end
