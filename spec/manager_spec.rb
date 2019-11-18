@@ -226,4 +226,18 @@ let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
       expect(game.over?).to eq(game.won?)
     end
   end
+
+  describe '#current_player' do
+  let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
+    it 'displays the current players symbol based on turn count, X if even, O if odd' do
+      game.set_input(0, :X)
+      expect(game.current_player).to eql(:O)
+    end
+
+    it 'displays the current players symbol based on turn count, X if even, O if odd' do
+      game.set_input(0, :X)
+      game.set_input(1, :O)
+      expect(game.current_player).to eql(:X)
+    end
+  end
 end
