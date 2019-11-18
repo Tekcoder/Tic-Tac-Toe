@@ -240,4 +240,11 @@ let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
       expect(game.current_player).to eql(:X)
     end
   end
+
+  describe '#board_index' do
+  let(:game) { GameManager.new([Player.new('Fernando'), Player.new('Ahmed')]) }
+  it 'displays the original value of the input.For instance, Instead of 2, the system sees 1' do
+  expect(game.board_index(2)).to eql(1)
+  end
+  end
 end
