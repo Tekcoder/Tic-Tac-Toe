@@ -75,7 +75,6 @@ class UserInterface
       turn
     end
   end
-
   # Turn method is called for players to fill the board until @game.over? method is true
   # If total moves = 9 and no combinations are detected, its a draw, if a combination is detected, @game.won is executed
   def play
