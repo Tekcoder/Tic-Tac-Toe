@@ -11,9 +11,9 @@ RSpec.describe Player do
       expect(player1.name).to eql('Mark')
     end
 
-      it 'should not assign name to the first player 1' do
-        expect(!player1.name).not_to eql('Mark')
-      end
+    it 'should not assign name to the first player 1' do
+      expect(!player1.name).not_to eql('Mark')
+    end
 
     it 'assigns name to the second player 2' do
       expect(player2.name).to eql('Ariel')
